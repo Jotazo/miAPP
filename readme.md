@@ -1,9 +1,29 @@
-# STEPS FOR INITIATE
+# STEPS FOR START
 
-- Create a virtual environment
+- Create a new folder and open it with your IDE, then start a new terminal and make git init
 
-  `python -m venv your_virtual_environment`
-  
+  > C:/new_folder> `git init`
+
+- Clone the repository in new folder:
+
+  > C:/new_folder> `git clone https://github.com/Jotazo/miAPP.git`
+
+- Create a virtual environment inside the new folder ***miAPP***
+
+  C:/new_folder/miApp> `python -m venv your_virtual_environment`
+
+  - The hierarchy of the folders will be like this:
+
+    ```
+    new_folder
+    │   
+    └───miAPP
+        │   
+        └───movements
+        │
+        └───your_virtual_environment       
+    
+    ```
 - Activate your virtual environment
 
   - WINDOWS:
