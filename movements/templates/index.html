@@ -6,10 +6,26 @@
     <title>Buscar Pelicula</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="POST">
         <h1>Pelicula a buscar</h1>
         <input type="text" name="pelicula">
+        {% if errores %}
+        <p>{{ errores }}</p>
+        {% endif %}
         <input type="submit" value="Buscar">
     </form>
+    <br>
+    <br>
+    <br>
+    {% if datos %}
+    <form action="/muestrapeli" method="POST">Selecciona Una Opción
+        <select name="select">
+            {% for elemento in datos %}
+            <option value="{{ elemento }}">{{ elemento }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Mostrar">
+    </form>
+    {% endif %}
 </body>
 </html>
