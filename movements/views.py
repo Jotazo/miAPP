@@ -11,7 +11,7 @@ def index():
 
     if request.method == 'POST':
         
-        datos = misc.llamada_api()
+        datos = misc.llamada_api_general('pelicula')
         
         if isinstance(datos, str):
             return render_template('index.html', errores=datos)
@@ -22,6 +22,6 @@ def index():
 
 @app.route('/muestrapeli', methods=['GET', 'POST'])
 def mostrarpelicula():
-    film_selected = misc.llamada_api2()
+    film_selected = misc.llamada_api_general('select')
 
     return render_template('pelicula.html', pelicula=film_selected[0])
