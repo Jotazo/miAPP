@@ -20,6 +20,6 @@
 
   `pip install -r requirements.txt`
 
-- Last step, we must to rename the file **config_.py** to **config.py** and fill the vars **SECRET_KEY** and **API_KEY**
+- Last step, we must to rename the file **config_.py** to **config.py** and fill the **API_KEY** var
 
 - Now you're ready for launch! ***Enjoy***

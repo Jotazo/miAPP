@@ -12,7 +12,10 @@ def llamada_api_general(tipo_busqueda=''):
     if respuesta.status_code == 200:
         datos = respuesta.json()
         if datos['Response'] == 'False':
-            error = datos['Error']
+            if datos['Error'] == 'Incorrect IMDb ID.':
+                error = 'Empty field'
+            else:
+                error = datos['Error']
             return error
         else:
             if tipo_busqueda == 'pelicula':
