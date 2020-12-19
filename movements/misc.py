@@ -2,11 +2,13 @@ import requests
 from flask import request
 from config import API_KEY
 
-def llamada_api_general(tipo_busqueda=''):
+validos = ['Title', 'Year', 'Runtime', 'Genre', 'Director', 'Actors', 'Plot', 'Poster']
+
+def llamada_api_general(tipo_busqueda='', param_url='s'):
     peliculas = []
     error = ''
     titulo = request.form[tipo_busqueda]    
-    url = f'http://www.omdbapi.com/?apikey={API_KEY}&s={titulo}'
+    url = f'http://www.omdbapi.com/?apikey={API_KEY}&{param_url}={titulo}'
     respuesta = requests.get(url)
 
     if respuesta.status_code == 200:
@@ -21,16 +23,22 @@ def llamada_api_general(tipo_busqueda=''):
             if tipo_busqueda == 'pelicula':
                 for elemento in datos['Search']:
                     if elemento['Type'] == 'movie':
-                        if elemento['Title'] not in datos:
-                            peliculas.append(elemento['Title'])
+                        d = {'Title':elemento['Title'], 'imdb':elemento['imdbID']}    
+                        peliculas.append(d)
                 return peliculas
             else:
-                for elemento in datos['Search']:
-                    if elemento['Title'] == titulo:
-                        if elemento['Poster'] == 'N/A':
-                            elemento['Poster'] = 'http://barracamalvin.com/addons/default/themes/sl/img/image-not-found.png'
-                        peliculas.append(elemento)
-                return peliculas
+                l = {}
+                for k, v in datos.items(): 
+                    if k in validos and k not in l:
+                        l[k] = v
+                        
+                for k, v in l.items():
+                    if v == 'N/A' and k != 'Poster':
+                        l[k] = '--No Results--'
+                    elif v == 'N/A' and k == 'Poster':
+                        l[k] = 'http://barracamalvin.com/addons/default/themes/sl/img/image-not-found.png'
+
+                return l
     else:
         error = respuesta.status_code
         if error == 401:

@@ -21,7 +21,7 @@
     <form action="/muestrapeli" method="POST">Selecciona Una Opción
         <select name="select">
             {% for elemento in datos %}
-            <option value="{{ elemento }}">{{ elemento }}</option>
+            <option value="{{ elemento['imdb'] }}">{{ elemento['Title'] }}</option>
             {% endfor %}
         </select>
         <input type="submit" value="Mostrar">

@@ -22,6 +22,6 @@ def index():
 
 @app.route('/muestrapeli', methods=['GET', 'POST'])
 def mostrarpelicula():
-    film_selected = misc.llamada_api_general('select')
+    film_selected = misc.llamada_api_general('select', 'i')
 
-    return render_template('pelicula.html', pelicula=film_selected[0])
+    return render_template('pelicula.html', pelicula=film_selected)
