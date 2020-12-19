@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Pelicula</title>
+</head>
+<body>
+    <h1><label for="titulo">Titulo:</label></h1>
+    <h3><label for="titulo2">{{ pelicula['Title'] }}</label></h3>
+    <h1><label for="año">Año:</label></h1>
+    <h3><label for="año2">{{ pelicula['Year'] }}</label></h3>
+    <img src="{{ pelicula['Poster'] }}" alt="poster"><br>
+    <a href="{{ url_for('index') }}">Volver a inicio</a>
+</body>
+</html>
