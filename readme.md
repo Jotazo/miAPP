@@ -1,10 +1,6 @@
 # STEPS FOR START
 
-- Create a new folder and open it with your IDE, then start a new terminal and make git init
-
-  > C:/new_folder> `git init`
-
-- Clone the repository in new folder:
+- Clone the repository in a new folder:
 
   > C:/new_folder> `git clone https://github.com/Jotazo/miAPP.git`
 
